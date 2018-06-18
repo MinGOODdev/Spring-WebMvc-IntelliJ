@@ -65,7 +65,7 @@
 </tr>
 </table>
 
-## Spring Dispatcher Servlet
+### Spring Dispatcher Servlet
 * Spring Web MVC 라이브러리에 들어있는 대표적인 Servlet 클래스입니다.
 * Spring Web MVC의 엔진에 해당하는 클래스입니다.
 * 웹브라우저가 웹서버에 전달한 request를 Spring Dispatcher Servlet이 받아 실행하면서 Spring Web MVC의 기능이 시작됩니다.
@@ -94,6 +94,29 @@ Servlet으로 구현해야 합니다. 동영상, 음악 스트리밍을 출력�
 * 예를 들어, hello.jsp 파일은 hello_jsp.java 파일로 자동으로 변환되어 컴파일되고 실행됩니다.
 * 즉, Tomcat에서 실행되는 것은 JSP 파일이 아니고, JSP 파일이 변환된 Servlet 클래스입니다.
 
+---
+
+## 실행 과정 설명
+1. 웹브라우저는 웹서버에 URL을 요청합니다.
+    * 이 요청을 HTTP request라고 합니다.
+    * HTTP request에는 URL과 request parameter가 포함되어 있습니다.
+    * 요청된 URL이 *.html, *.jpg 등 정적 파일이라면,<br/>
+    웹서버는 그 파일을 디스크에서 읽어 웹브라우저에 그대로 전송합니다.
+    * 요청된 URL이 jsp 파일이라면,<br/>
+    웹서버는 그 jsp 파일을 실행하고, jsp의 실행 결과 출력인 html 태그를 웹브라우저에 전송합니다.
+    * 요청된 URL이 servlet의 url 패턴과 일치하면,<br/>
+    웹서버는 그 servlet을 실행하고, servlet의 실행 결과 출력을 웹브라우저에 전송합니다.
+    
+2. 요청된 URL이 spring dispatcher servlet의 url 패턴과 일치하면,<br/>
+    1. 웹서버는 spring dispatcher servlet을 실행합니다.
+    2. spring dispatcher servlet은 controller action method의 @RequestMapping 값과 URL을 비교합니다.<br/>
+    요청된 URL과 일치하는 controller action method를 찾아 호출합니다.
+    3. controller action method에서는 model에 데이터를 add 합니다.
+    4. controller action method는 view의 이름을 리턴합니다.
+    5. spring dispatcher servlet은 리턴된 view의 이름에 해당하는 view 파일을 찾아 호출합니다.<br/>
+    그리고 model 객체를 view에 전달합니다.
+    6. view는 html 태그를 출력하고, model에서 데이터를 꺼내 출력합니다.
+    7. view의 출력이 웹브라우저에 전송됩니다.
 
 <tr>
 <td></td>

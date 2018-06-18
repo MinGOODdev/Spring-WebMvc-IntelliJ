@@ -41,6 +41,7 @@
             <version>${org.aspectj-version}</version>
         </dependency>
 
+        <!-- logger -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -101,6 +102,14 @@
             <version>1.2</version>
         </dependency>
 
+        <!-- For Utils Class -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.3.1</version>
+        </dependency>
+
+        <!-- junit for test -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
