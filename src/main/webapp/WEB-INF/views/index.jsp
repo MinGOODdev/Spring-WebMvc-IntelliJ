@@ -14,6 +14,7 @@
 <body>
 
 <h1>Hello World!</h1>
+<a href="user/list">user/list</a><br/>
 <a href="user/edit?id=1">user/edit?id=1</a><br/>
 <a href="user/edit?id=2">user/edit?id=2</a><br/>
 <a href="user/edit?id=3">user/edit?id=3</a><br/>

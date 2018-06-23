@@ -7,10 +7,13 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <title>WebMvc</title>
     <style>
         label { margin-top: 20px; }
@@ -20,29 +23,38 @@
 <div class="container">
     <h1>사용자 정보 수정</h1>
 
-    <form class="form-group" method="post">
-        <label for="id">id</label>
-        <input class="form-control" type="text" id="id" value="${user.id}" readonly />
+    <form:form method="post" modelAttribute="user" cssClass="form-group">
+        <label>로그인 ID</label>
+        <form:input path="loginId" cssClass="form-control"/>
 
-        <label for="loginId">로그인 ID</label>
-        <input class="form-control" type="text" id="loginId" name="loginId" value="${user.loginId}" />
+        <label>이름</label>
+        <form:input path="name" cssClass="form-control"/>
 
-        <label for="name">이름</label>
-        <input class="form-control" type="text" id="name" name="name" value="${user.name}" />
+        <label>이메일</label>
+        <form:input path="email" cssClass="form-control"/>
 
-        <label for="email">이메일</label>
-        <input class="form-control" type="email" id="email" name="email" value="${user.email}" />
+        <label>사용자 유형</label>
+        <form:select path="userType">
+            <form:option value="관리자"/>
+            <form:option value="교수"/>
+            <form:option value="학생"/>
+        </form:select>
 
-        <label for="userType">사용자 유형</label>
-        <input class="form-control" type="text" id="userType" name="userType" value="${user.userType}" />
+        <label>학과</label>
+        <form:select path="departmentId">
+            <form:options itemValue="id" itemLabel="departmentName" items="${ departments }"/>
+            <%--<form:option value="1" label="소프트웨어공학과"/>--%>
+            <%--<form:option value="2" label="컴퓨터공학과"/>--%>
+            <%--<form:option value="3" label="정보통신공학과"/>--%>
+            <%--<form:option value="4" label="글로컬IT학과"/>--%>
+        </form:select>
 
-        <label for="departmentId">학과</label>
-        <input class="form-control" type="text" id="departmentId" name="departmentId" value="${user.departmentId}" />
-        <br/>
+        <hr/>
         <div>
             <button class="btn btn-primary" type="submit">Save</button>
+            <a href="list" class="btn btn-default">목록으로</a>
         </div>
-    </form>
+    </form:form>
 
     <c:if test="${not empty error}">
         <div class="alert alert-danger" role="alert">${error}</div>
@@ -51,5 +63,6 @@
     <c:if test="${not empty success}">
         <div class="alert alert-success" role="alert">${success}</div>
     </c:if>
+</div>
 </body>
 </html>

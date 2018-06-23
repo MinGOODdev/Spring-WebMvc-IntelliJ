@@ -2,7 +2,11 @@ package com.spring.mapper;
 
 import com.spring.dto.User;
 
+import java.util.List;
+
 public interface UserMapper {
+
+  List<User> findAll();
 
   User findById(int id);
 

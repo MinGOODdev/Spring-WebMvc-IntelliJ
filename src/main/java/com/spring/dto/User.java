@@ -9,6 +9,7 @@ public class User {
   private String email;
   private String userType;
   private int departmentId;
+  String departmentName;
 
   public int getId() {
     return id;
@@ -64,6 +65,14 @@ public class User {
 
   public void setDepartmentId(int departmentId) {
     this.departmentId = departmentId;
+  }
+
+  public String getDepartmentName() {
+    return departmentName;
+  }
+
+  public void setDepartmentName(String departmentName) {
+    this.departmentName = departmentName;
   }
 
 }
