@@ -12,7 +12,8 @@
 <td>
 - Java 클래스로 구현됩니다.<br/>
 - 실행 흐름을 지휘 통제하는 역할을 합니다.<br/>
-- 웹브라우저의 URL 요청을 웹서버가 받아서 실행할 때, Controller가 먼저 실행되어 이후 실행 흐름을 지휘 통제합니다.<br/>
+- 웹브라우저의 URL 요청을 웹서버가 받아서 실행할 때,<br/>
+Controller가 먼저 실행되어 이후 실행 흐름을 지휘 통제합니다.<br/>
 - Controller가 지휘 통제 외에 직접 작업을 하는 것은 바람직하지 않습니다.<br/>
 - 즉, Controller에는 실행 흐름의 지휘 통제에 해당하는 코드만 있어야 합니다.<br/>
 - 실행 흐름을 지휘 통제한다는 것은 다른 객체들의 메소드를 호출하는 대장이라는 뜻입니다.<br/>
@@ -59,11 +60,13 @@
 <td>
 - Java 클래스로 구현됩니다.<br/>
 - DAO, Controller, View에 속하지 않는 작업은 Service 클래스에 구현합니다.<br/>
-- 예를 들어, 사용자가 입력한 데이터가 올바른지 검사하거나, 작업을 할 권한이 있는지 검사하거나, 
+- 예를 들어, 사용자가 입력한 데이터가 올바른지 검사하거나, 작업을 할 권한이 있는지 검사하거나,<br/>
 비밀번호를 저장하기 전에 암호화하는 작업들은 Service 클래스에 구현되어야 합니다.
 </td>
 </tr>
 </table>
+
+---
 
 ### Spring Dispatcher Servlet
 * Spring Web MVC 라이브러리에 들어있는 대표적인 Servlet 클래스입니다.
@@ -97,30 +100,23 @@ Servlet으로 구현해야 합니다. 동영상, 음악 스트리밍을 출력�
 ---
 
 ## 실행 과정 설명
-1. 웹브라우저는 웹서버에 URL을 요청합니다.
-    * 이 요청을 HTTP request라고 합니다.
-    * HTTP request에는 URL과 request parameter가 포함되어 있습니다.
-    * 요청된 URL이 *.html, *.jpg 등 정적 파일이라면,<br/>
-    웹서버는 그 파일을 디스크에서 읽어 웹브라우저에 그대로 전송합니다.
-    * 요청된 URL이 jsp 파일이라면,<br/>
-    웹서버는 그 jsp 파일을 실행하고, jsp의 실행 결과 출력인 html 태그를 웹브라우저에 전송합니다.
-    * 요청된 URL이 servlet의 url 패턴과 일치하면,<br/>
-    웹서버는 그 servlet을 실행하고, servlet의 실행 결과 출력을 웹브라우저에 전송합니다.
+### 1. 웹브라우저는 웹서버에 URL을 요청합니다.
+* 이 요청을 HTTP request라고 합니다.
+* HTTP request에는 URL과 request parameter가 포함되어 있습니다.
+* 요청된 URL이 *.html, *.jpg 등 정적 파일이라면,<br/>
+웹서버는 그 파일을 디스크에서 읽어 웹브라우저에 그대로 전송합니다.
+* 요청된 URL이 jsp 파일이라면,<br/>
+웹서버는 그 jsp 파일을 실행하고, jsp의 실행 결과 출력인 html 태그를 웹브라우저에 전송합니다.
+* 요청된 URL이 servlet의 url 패턴과 일치하면,<br/>
+웹서버는 그 servlet을 실행하고, servlet의 실행 결과 출력을 웹브라우저에 전송합니다.
     
-2. 요청된 URL이 spring dispatcher servlet의 url 패턴과 일치하면,<br/>
-    1. 웹서버는 spring dispatcher servlet을 실행합니다.
-    2. spring dispatcher servlet은 controller action method의 @RequestMapping 값과 URL을 비교합니다.<br/>
-    요청된 URL과 일치하는 controller action method를 찾아 호출합니다.
-    3. controller action method에서는 model에 데이터를 add 합니다.
-    4. controller action method는 view의 이름을 리턴합니다.
-    5. spring dispatcher servlet은 리턴된 view의 이름에 해당하는 view 파일을 찾아 호출합니다.<br/>
-    그리고 model 객체를 view에 전달합니다.
-    6. view는 html 태그를 출력하고, model에서 데이터를 꺼내 출력합니다.
-    7. view의 출력이 웹브라우저에 전송됩니다.
-
-<tr>
-<td></td>
-<td>
-
-</td>
-</tr>
+### 2. 요청된 URL이 spring dispatcher servlet의 url 패턴과 일치하면,<br/>
+1. 웹서버는 spring dispatcher servlet을 실행합니다.
+2. spring dispatcher servlet은 controller action method의 @RequestMapping 값과 URL을 비교합니다.<br/>
+요청된 URL과 일치하는 controller action method를 찾아 호출합니다.
+3. controller action method에서는 model에 데이터를 add 합니다.
+4. controller action method는 view의 이름을 리턴합니다.
+5. spring dispatcher servlet은 리턴된 view의 이름에 해당하는 view 파일을 찾아 호출합니다.<br/>
+그리고 model 객체를 view에 전달합니다.
+6. view는 html 태그를 출력하고, model에서 데이터를 꺼내 출력합니다.
+7. view의 출력이 웹브라우저에 전송됩니다.
