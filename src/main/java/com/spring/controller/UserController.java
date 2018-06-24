@@ -51,4 +51,10 @@ public class UserController {
     return "user/edit";
   }
 
+  @RequestMapping(value = "/user/delete")
+  public String delete(@RequestParam("id") int id) {
+    userMapper.delete(id);
+    return "redirect:list";
+  }
+
 }

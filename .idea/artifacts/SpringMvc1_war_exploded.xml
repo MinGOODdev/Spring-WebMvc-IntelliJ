@@ -27,6 +27,8 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.14.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.14.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.14.RELEASE" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+          <element id="library" level="project" name="Maven: org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16" />
         </element>
       </element>
     </root>

@@ -52,6 +52,7 @@
         <hr/>
         <div>
             <button class="btn btn-primary" type="submit">Save</button>
+            <a href="/user/delete?id=${user.id}" class="btn btn-danger">삭제</a>
             <a href="list" class="btn btn-default">목록으로</a>
         </div>
     </form:form>
